@@ -14,10 +14,10 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Navigation } from "lucide-react";
-import ThemeSwitch from "./theme-switch";
-import Search from "./search";
-import Profile from "./profile";
-import Cart from "./cart";
+import ThemeSwitch from "./shared/theme-switch";
+import Search from "./shared/search";
+import Profile from "./shared/profile";
+import Cart from "./shared/cart";
 import { Button } from "./ui/button";
 import { AlignJustify } from "lucide-react";
 import {
@@ -67,41 +67,41 @@ const components = [
   },
 ];
 
-export default function Header() {
+export default function Navbar() {
   return (
-    <nav className='sticky top-0 z-10 w-full px-5 py-2 bg-white border-b md:px-24 border-zinc-100 dark:border-zinc-900 dark:bg-black'>
-      <NavigationMenu className='flex items-center justify-between'>
+    <nav className="sticky top-0 z-10 w-full px-5 py-2 bg-white border-b md:px-24 border-zinc-100 dark:border-zinc-900 dark:bg-black">
+      <NavigationMenu className="flex items-center justify-between">
         <NavigationMenuList>
-          <NavigationMenuItem className='pr-5 font-bold uppercase'>
-            <Link href='/'>Engravedom</Link>
+          <NavigationMenuItem className="pr-5 font-bold uppercase">
+            <Link href="/">Engravedom</Link>
           </NavigationMenuItem>
-          <div className='hidden md:flex'>
+          <div className="hidden md:flex">
             <NavigationMenuItem>
               <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className='grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]'>
-                  <li className='row-span-3'>
+                <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                  <li className="row-span-3">
                     <NavigationMenuLink asChild>
                       <a
-                        className='flex flex-col justify-end w-full h-full p-6 no-underline rounded-md outline-none select-none bg-gradient-to-b from-muted/50 to-muted focus:shadow-md'
-                        href='/'
+                        className="flex flex-col justify-end w-full h-full p-6 no-underline rounded-md outline-none select-none bg-gradient-to-b from-muted/50 to-muted focus:shadow-md"
+                        href="/"
                       >
-                        <div className='mt-4 mb-2 text-lg font-medium'>
+                        <div className="mt-4 mb-2 text-lg font-medium">
                           Engravedom
                         </div>
-                        <p className='text-sm leading-tight text-muted-foreground'>
+                        <p className="text-sm leading-tight text-muted-foreground">
                           The Dom of Customizable Laser Engraving Products
                         </p>
                       </a>
                     </NavigationMenuLink>
                   </li>
-                  <ListItem href='/docs' title='Introduction'>
+                  <ListItem href="/docs" title="Introduction">
                     What we do and why we do it.
                   </ListItem>
-                  <ListItem href='/docs/installation' title='Customization'>
+                  <ListItem href="/docs/installation" title="Customization">
                     How to customize our products.
                   </ListItem>
-                  <ListItem href='/docs/primitives/typography' title='Examples'>
+                  <ListItem href="/docs/primitives/typography" title="Examples">
                     Examples of our products.
                   </ListItem>
                 </ul>
@@ -110,7 +110,7 @@ export default function Header() {
             <NavigationMenuItem>
               <NavigationMenuTrigger>Products</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className='grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] '>
+                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                   {components.map((component) => (
                     <ListItem
                       key={component.title}
@@ -124,7 +124,7 @@ export default function Header() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href='/docs' legacyBehavior passHref>
+              <Link href="/docs" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   Contact
                 </NavigationMenuLink>
@@ -133,7 +133,7 @@ export default function Header() {
           </div>
         </NavigationMenuList>
 
-        <NavigationMenuList className='items-center hidden gap-2 md:flex'>
+        <NavigationMenuList className="items-center hidden gap-2 md:flex">
           <NavigationMenuItem>
             <ThemeSwitch />
           </NavigationMenuItem>
@@ -147,10 +147,10 @@ export default function Header() {
             <Cart />
           </NavigationMenuItem>
         </NavigationMenuList>
-        <div className='md:hidden'>
+        <div className="md:hidden">
           <Sheet>
             <SheetTrigger>
-              <Button variant='ghost' size='icon'>
+              <Button variant="ghost" size="icon">
                 <AlignJustify />
               </Button>
             </SheetTrigger>
@@ -158,51 +158,51 @@ export default function Header() {
             <SheetContent>
               <SheetHeader>
                 <SheetTitle>
-                  <Link href='/' className='font-bold uppercase'>
+                  <Link href="/" className="font-bold uppercase">
                     Engravedom
                   </Link>
                 </SheetTitle>
                 <SheetDescription>
-                  <ul className='flex flex-col items-center w-full pt-5'>
+                  <ul className="flex flex-col items-center w-full pt-5">
                     <li>
-                      <Button variant='ghost' className='w-full'>
-                        <Link href='/'>Home</Link>
+                      <Button variant="ghost" className="w-full">
+                        <Link href="/">Home</Link>
                       </Button>
                     </li>
                     <li>
-                      <Button variant='ghost'>
-                        <Link href='/'>Getting Started</Link>
+                      <Button variant="ghost">
+                        <Link href="/">Getting Started</Link>
                       </Button>
                     </li>
                     <li>
-                      <Button variant='ghost'>
-                        <Link href='/'>Products</Link>
+                      <Button variant="ghost">
+                        <Link href="/">Products</Link>
                       </Button>
                     </li>
                     <li>
-                      <Button variant='ghost'>
-                        <Link href='/'>Contact</Link>
+                      <Button variant="ghost">
+                        <Link href="/">Contact</Link>
                       </Button>
                     </li>
                   </ul>
-                  <ul className='flex items-center justify-center gap-3 pt-7'>
+                  <ul className="flex items-center justify-center gap-3 pt-7">
                     <li>
-                      <Button variant='ghost'>
-                        <Link href='/'>
+                      <Button variant="ghost">
+                        <Link href="/">
                           <Profile />
                         </Link>
                       </Button>
                     </li>
                     <li>
-                      <Button variant='ghost'>
-                        <Link href='/'>
+                      <Button variant="ghost">
+                        <Link href="/">
                           <Cart />
                         </Link>
                       </Button>
                     </li>
                     <li>
-                      <Button variant='ghost'>
-                        <Link href='/'>
+                      <Button variant="ghost">
+                        <Link href="/">
                           <ThemeSwitch />
                         </Link>
                       </Button>
@@ -230,8 +230,8 @@ const ListItem = ({ className, title, children, ...props }, href) => {
           )}
           {...props}
         >
-          <div className='text-sm font-medium leading-none'>{title}</div>
-          <p className='text-sm leading-snug line-clamp-2 text-muted-foreground'>
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="text-sm leading-snug line-clamp-2 text-muted-foreground">
             {children}
           </p>
         </Link>
