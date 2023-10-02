@@ -14,11 +14,11 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Navigation } from "lucide-react";
-import ThemeSwitch from "./shared/theme-switch";
-import Search from "./shared/search";
-import Profile from "./shared/profile";
-import Cart from "./shared/cart";
-import { Button } from "./ui/button";
+import ThemeSwitch from "../shared/theme-switch";
+import Search from "../shared/search";
+import Profile from "../shared/profile";
+import Cart from "../shared/cart";
+import { Button } from "../ui/button";
 import { AlignJustify } from "lucide-react";
 import {
   Sheet,
@@ -69,7 +69,7 @@ const components = [
 
 export default function Navbar() {
   return (
-    <nav className="sticky top-0 z-10 w-full px-5 py-2 bg-white border-b md:px-24 border-zinc-100 dark:border-zinc-900 dark:bg-black">
+    <nav className="sticky top-0 z-10 w-full px-5 py-5 md:py-2 bg-white border-b md:px-24 border-zinc-100 dark:border-zinc-900 dark:bg-background">
       <NavigationMenu className="flex items-center justify-between">
         <NavigationMenuList>
           <NavigationMenuItem className="pr-5 font-bold uppercase">
@@ -130,6 +130,11 @@ export default function Navbar() {
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Button variant="outline" className="w-full">
+                <Link href="/dashboard">Dashboard</Link>
+              </Button>
+            </NavigationMenuItem>
           </div>
         </NavigationMenuList>
 
@@ -141,7 +146,9 @@ export default function Navbar() {
             <Search />
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Profile />
+            <Link href="/auth">
+              <Profile />
+            </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <Cart />
@@ -150,9 +157,7 @@ export default function Navbar() {
         <div className="md:hidden">
           <Sheet>
             <SheetTrigger>
-              <Button variant="ghost" size="icon">
-                <AlignJustify />
-              </Button>
+              <AlignJustify />
             </SheetTrigger>
 
             <SheetContent>
@@ -163,32 +168,32 @@ export default function Navbar() {
                   </Link>
                 </SheetTitle>
                 <SheetDescription>
-                  <ul className="flex flex-col items-center w-full pt-5">
+                  <ul className="flex flex-col w-full pt-5 items-baseline">
                     <li>
                       <Button variant="ghost" className="w-full">
                         <Link href="/">Home</Link>
                       </Button>
                     </li>
                     <li>
-                      <Button variant="ghost">
+                      <Button variant="ghost" className="w-full">
                         <Link href="/">Getting Started</Link>
                       </Button>
                     </li>
                     <li>
-                      <Button variant="ghost">
+                      <Button variant="ghost" className="w-full">
                         <Link href="/">Products</Link>
                       </Button>
                     </li>
                     <li>
-                      <Button variant="ghost">
+                      <Button variant="ghost" className="w-full">
                         <Link href="/">Contact</Link>
                       </Button>
                     </li>
                   </ul>
-                  <ul className="flex items-center justify-center gap-3 pt-7">
+                  <ul className="flex items-center gap-3 pt-7">
                     <li>
                       <Button variant="ghost">
-                        <Link href="/">
+                        <Link href="/auth">
                           <Profile />
                         </Link>
                       </Button>
