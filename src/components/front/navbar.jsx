@@ -13,7 +13,6 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { Navigation } from "lucide-react";
 import ThemeSwitch from "../shared/theme-switch";
 import Search from "../shared/search";
 import Profile from "../shared/profile";
@@ -28,46 +27,10 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { UserNav } from "../dashboard/user-nav";
+import { components } from "@/lib/static-data";
 
-const components = [
-  {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
-  },
-  {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
-  },
-  {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  },
-];
-
-export default function Navbar() {
+export default function Navbar({ ...props }) {
   return (
     <nav className="sticky top-0 z-10 w-full px-5 py-5 md:py-2 bg-white border-b md:px-24 border-zinc-100 dark:border-zinc-900 dark:bg-background">
       <NavigationMenu className="flex items-center justify-between">
@@ -146,9 +109,13 @@ export default function Navbar() {
             <Search />
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/auth">
-              <Profile />
-            </Link>
+            {props.user ? (
+              <UserNav initials="AG" user={props.user} />
+            ) : (
+              <Link href="/auth/sign-in">
+                <Profile />
+              </Link>
+            )}
           </NavigationMenuItem>
           <NavigationMenuItem>
             <Cart />
@@ -193,7 +160,7 @@ export default function Navbar() {
                   <ul className="flex items-center gap-3 pt-7">
                     <li>
                       <Button variant="ghost">
-                        <Link href="/auth">
+                        <Link href="/auth/sign-in">
                           <Profile />
                         </Link>
                       </Button>
